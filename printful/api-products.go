@@ -33,7 +33,7 @@ func GetVariants(product Product) (Variants, error) {
 	return parsed.Result, nil
 }
 
-func GetAllVariants(products []Product) ([]Variants, bool, []error) {
+func GetAllVariants(products []Product) ([]Variants, []error, bool) {
 	length := cap(products)
 	allVariants := make([]Variants, length)
 	errors := make([]error, length)
@@ -62,5 +62,5 @@ func GetAllVariants(products []Product) ([]Variants, bool, []error) {
 		}
 	}
 
-	return allVariants, ok, errors
+	return allVariants, errors, ok
 }
