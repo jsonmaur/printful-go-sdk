@@ -1,13 +1,22 @@
 package printful
 
-type ProductsResponse struct {
-	Code   int       `json:"code"`
-	Result []Product `json:"result"`
+type Response struct {
+	Code   int `json:"code"`
 	Paging struct {
 		Total  int `json:"total"`
 		Offset int `json:"offset"`
 		Limit  int `json:"limit"`
 	}
+}
+
+type ResponseProduct struct {
+	*Response
+	Result []Product `json:"result"`
+}
+
+type ResponseVariants struct {
+	*Response
+	Result Variants `json:"result"`
 }
 
 type Product struct {
@@ -16,11 +25,6 @@ type Product struct {
 	Name       string `json:"name"`
 	Variants   int    `json:"variants"`
 	Synced     int    `json:"synced"`
-}
-
-type VariantsResponse struct {
-	Code   int      `json:"code"`
-	Result Variants `json:"result"`
 }
 
 type Variants struct {
